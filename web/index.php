@@ -111,8 +111,7 @@
 		        
 		        if(nm > 1 || nr > 3 || ng > 3 || nb > 3 || na > 3 || nd > 3){}
 		        else{
-                    window.open("http://"+ IP1 + IP2 +"/get?input1="+ mode +"&input2="+ red +"&input3="+ green +"&input4="+ blue +"&input5="+ a +"&input6=" + delay);
-		            //window.location.href = "http://"+ IP1 + IP2 +"/get?input1="+ mode +"&input2="+ red +"&input3="+ green +"&input4="+ blue +"&input5="+ a +"&input6=" + delay;
+                            window.open("http://"+ IP1 + IP2 +"/get?input1="+ mode +"&input2="+ red +"&input3="+ green +"&input4="+ blue +"&input5="+ a +"&input6=" + delay);   
 		        }
 		    }
 		</script>
