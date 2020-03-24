@@ -7,6 +7,7 @@ Upload esp32_webserver.ino to esp32.
 Connect the processors on this way:
 
 GND of ESP32 ------ GND of Arduino
+
 TX0 of ESP32 ------ RX of Arduino
 
 You can adjust the number of LEDs as well as the led pin in the Arduino code.
