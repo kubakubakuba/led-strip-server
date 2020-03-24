@@ -13,10 +13,10 @@ TX0 of ESP32 ------ RX of Arduino
 You can adjust the number of LEDs as well as the led pin in the Arduino code.
 
 # How to controll?
-Open serial monitor on correct COM port, while connected to ESP32. Have the correct baudrate of 9600.\n
-ESP should write out its ip adress.\n
-Then simply enter the IP in your browser.\n
-All parameters need to be written as 3-character numbers (5 needs to be written as 005).\n
+Open serial monitor on correct COM port, while connected to ESP32. Have the correct baudrate of 9600.
+ESP should write out its ip adress.
+Then simply enter the IP in your browser.
+All parameters need to be written as 3-character numbers (5 needs to be written as 005).
 Mode is just one number(0-9)
 
 # Controlling alternatives
