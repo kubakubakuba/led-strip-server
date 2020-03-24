@@ -24,4 +24,5 @@ You can also visit https://j.8u.cz/projects/led_strip/ which has the same code.
 # To be updated in future
 - I will work on better UI
 - I will add more animations
+- Electronics board schematic will be drawn.
 - More XMas modes :)
