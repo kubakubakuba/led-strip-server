@@ -31,5 +31,5 @@ You can also visit https://j.8u.cz/projects/led_strip/ which has the same code.
 - More XMas modes :)
 
 # What else?
-Feels free to customise the code!
+Feel free to customise the code!
 Enjoy :)
