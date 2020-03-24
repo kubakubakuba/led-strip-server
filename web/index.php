@@ -1,3 +1,8 @@
+<!--#################################################
+Created by Jakub Pelc, ©2020
+For more info, email me at info@jakub-pelc.8u.cz.
+Licensed under creative commons
+#################################################-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
