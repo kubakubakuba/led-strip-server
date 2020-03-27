@@ -10,8 +10,8 @@ Licensed under creative commons
 
 AsyncWebServer server(80);
 
-const char* ssid = "###<YOUR SSID HERE>###";
-const char* password = "###<YOUR PASSWORD HERE>###";
+const char* ssid = "netis_3577D0";
+const char* password = "password";
 
 const char* PARAM_INPUT_1 = "input1";
 const char* PARAM_INPUT_2 = "input2";
@@ -20,10 +20,12 @@ const char* PARAM_INPUT_4 = "input4";
 const char* PARAM_INPUT_5 = "input5";
 const char* PARAM_INPUT_6 = "input6";
 
+// HTML web page to handle 3 input fields (input1, input2, input3)
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html><head>
   <title>ESP Input Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head><body>
   <form action="/get">
     Mode: <input type="text" name="input1"> <br />
@@ -51,10 +53,13 @@ void setup() {
   Serial.println();
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
-  
+
+  // Send web page with input fields to client
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/html", index_html);
   });
+
+  // Send a GET request to <ESP_IP>/get?input1=<inputMessage>
   server.on("/get", HTTP_GET, [] (AsyncWebServerRequest *request) {
     String inputMessage, inputMessage1, inputMessage2, inputMessage3, inputMessage4, inputMessage5, inputMessage6;
     String inputParam;
@@ -70,10 +75,12 @@ void setup() {
       Serial.println(inputMessage);
       Serial2.println(inputMessage);
     }
+   
     else {
       inputMessage = "No message sent";
       inputParam = "none";
     }
+    
     request->send(200, "text/html", "Request was sent <br><a href=\"/\">Return to Home Page</a> <script type=\"text/javascript\">window.close();</script>");
   });
   server.onNotFound(notFound);
