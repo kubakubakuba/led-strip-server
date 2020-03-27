@@ -3,13 +3,16 @@ Created by Jakub Pelc, ©2020
 For more info, email me at info@jakub-pelc.8u.cz.
 Licensed under creative commons
 #################################################*/
+#include <U8glib.h>
 #include <Adafruit_NeoPixel.h>
 
 #define LED_PIN    7
 #define LED_COUNT 147
 #define AMPLITUDE 255
 int DELAY  = 10;
+long int prepis = 0;
 
+U8GLIB_SSD1306_128X64 mujOled(U8G_I2C_OPT_NONE);
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 String rs, bs, gs, as, ds, ids;
@@ -17,6 +20,22 @@ int r = 0, g = 0, b = 0, a = 0, id = 0;
 String datain = "";
 double t_var;
 
+void vypis_oled(String oa, String ob, String oc, String od, String oe, String of){
+  mujOled.setFont(u8g_font_unifont);
+  mujOled.setPrintPos(10, 0);
+  mujOled.print("mod: " + oa);
+  mujOled.setPrintPos(10, 12);
+  mujOled.print("r: " + ob);
+  mujOled.setPrintPos(10, 24);
+  mujOled.print("g: " + oc);
+  mujOled.setPrintPos(10, 36);
+  mujOled.print("b: " + od);
+  mujOled.setPrintPos(10, 48);
+  mujOled.print("a: " + oe);
+  mujOled.setPrintPos(10, 60);
+  mujOled.print("delay: " + of);
+  }
+  
 void setup() {
   Serial.begin(9600);
   strip.begin();
@@ -135,4 +154,17 @@ void loop() {
 
   strip.show();
   t_var += (double)DELAY / 1000;
+
+  if (millis()-prepis > 50) {
+    // následující skupina příkazů
+    // obnoví obsah OLED displeje
+    mujOled.firstPage();
+    do {
+      // funkce vykresli vykreslí žádaný obsah
+      vypis_oled(ids, rs, gs, bs, as, ds);
+    } while( mujOled.nextPage() );
+    // uložení posledního času obnovení
+    prepis = millis();
+  }
+  
 }
