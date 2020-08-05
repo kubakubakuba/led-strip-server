@@ -1,11 +1,11 @@
 <?php 
-	$mysqli = new mysqli('database.host.com', 'username', 'password', 'databasename');
-	!$mysqli->connect_errno or die("Error while connecting to SQL"); 
+	$mysqli = new mysqli('your.database.host', 'username', 'password', 'databasename');
+	!$mysqli->connect_errno or die("Error while connecting to MySQL");
 ?>
 
 <?php
 	$incolor = $_GET["color"];
-        $color = str_replace(' ', '', $incolor);
+    $color = str_replace(' ', '', $incolor);
 
     $sql = "SELECT * FROM homeapi WHERE ID = 1";
 	$result = $mysqli->query($sql);
@@ -22,13 +22,14 @@
 	    $ngrokid = $row["ngrokid"];
 	}
 	
-$sql = "SELECT * FROM colors WHERE colorname = '".$mysqli->real_escape_string($color)."'";
+    $sql = "SELECT * FROM colors WHERE colorname = '".$mysqli->real_escape_string($color)."'";
 	$result = $mysqli->query($sql);
     
     while($row = $result->fetch_assoc())
 	{
 	    $color_hex = $row["hexcode"];
 	}
+	
 	$mysqli -> close();
 	
     if($_GET["key"] == $apikey)
@@ -124,7 +125,7 @@ $sql = "SELECT * FROM colors WHERE colorname = '".$mysqli->real_escape_string($c
         echo $red."\n".$green."\n".$blue."\n";
         $url = "http://" . $ngrokid . ".ngrok.io/get?input1=" . $mode . "&input2=" . $red . "&input3=" . $green . "&input4=" . $blue . "&input5=" . $a . "&input6=" . $delay;
         echo $url;
-        if(!isset($nosend))
+        if(isset($send))
         {
             //header("Location: http://" . $ngrokid . ".ngrok.io/get?input1=" . $mode . "&input2=" . $red . "&input3=" . $green . "&input4=" . $blue . "&input5=" . $a . "&input6=" . $delay);
             header("Location: ".$url);
