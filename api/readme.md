@@ -1,11 +1,13 @@
 # HomeAPI
-## What you need?
+## What do you need?
 - Configured led-strip-server setup
 - Running ngrok on raspberry pi, or port forwarding
-## Using HomeAPI
+## Setup
 Make a database and fillout needed information on the top of index.php file.  
 Make a new table with supplied sql file.  
-Change values for ngrokid and acceskey if needed.  
+Change values for ngrokid and acceskey if needed. 
+Index.php takes values from id=1 row only!  
+## Using HomeAPI
 Go to index.php and use your acces key to acces it:  
 ```
 http://your.page.io/homeapi/index.php?key=youraccesskey
